@@ -16,13 +16,13 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.use((req, res, next) => {
-  let u_id = req.cookies.u_id;
-  if (!u_id) {
-    return res.status(401).json({ message: "Your not Authenticated to login  , So Don't Try to Access our website " });
-  }
-  next();
-})
+// app.use((req, res, next) => {
+//   let u_id = req.cookies.u_id;
+//   if (!u_id) {
+//     return res.status(401).json({ message: "Your not Authenticated to login  , So Don't Try to Access our website " });
+//   }
+//   next();
+// })
 
 app.get("/", async (req, res) => {
   try {
@@ -32,6 +32,15 @@ app.get("/", async (req, res) => {
     return res.status(404).json({ message: "Error on fetching Data" });
   }
 });
+app.get("/get/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await ProductModel.findById(id);
+    return res.json(product);
+  } catch (error) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+})
 
 
 app.put("/update/:id", async (req, res) => {
@@ -54,13 +63,14 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.post("/update/:id", async (req, res) => {
-  let data = req.params.id;
+app.post("/upload", async (req, res) => {
+  let {data} = req.body;
+  console.log(`this is data from post req to upload ${data}`);
   try {
-    let product = await ProductModel.findByIdAndUpdate(data, req.body);
+    let product = await ProductModel.create(data);
     return res.json(product);
   } catch (error) {
-    return res.status(404).json({ message: "Error on updating time " });
+    return res.status(404).json({ message: "Error on uploading time " });
   }
 });
 
