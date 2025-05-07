@@ -20,6 +20,10 @@ const productSchema = mongoose.Schema({
   description: {
     type: String,
     required: true
+  } ,
+  isBestSelling : {
+    type : Boolean,
+    default : false
   }
 })
 

@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+.animated-bg {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(-45deg, #f093fb, #f5576c, #5ee7df, #b490ca);
+  background-size: 400% 400%;
+  animation: heartbeat 10s ease infinite;
+  padding-top: 50px;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Background pulsing layer */
+.heartbeat-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255,192,203,0.2) 0%, transparent 70%);
+  animation: heartbeat 2.5s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}

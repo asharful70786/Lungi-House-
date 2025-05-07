@@ -9,11 +9,13 @@ function ProductEdit() {
     price: "",
     category: "",
     description: "",
+    image: "",
+    isBestSelling: "",
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3000/get/${id}` , {
-      credentials: "include"
+    fetch(`http://localhost:3000/get/${id}`, {
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => setFormData(data));
@@ -28,8 +30,8 @@ function ProductEdit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   let response =  await fetch(`http://localhost:3000/update/${id}`, {
-     credentials  : "include",
+    let response = await fetch(`http://localhost:3000/update/${id}`, {
+      credentials: "include",
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -42,43 +44,60 @@ function ProductEdit() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Update Product</h2>
-      <form onSubmit={handleSubmit} className="space-y-3">
+    <div className="max-w-xl mx-auto p-8 bg-white shadow-lg rounded-xl mt-10 border border-gray-200">
+      <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">Update Product</h2>
+      <form onSubmit={handleSubmit} className="space-y-5">
         <input
-          className="w-full border p-2"
+          className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Name"
+          placeholder="Product Name"
+          required
         />
+
+        <select
+          name="isBestSelling"
+          value={formData.isBestSelling}
+          onChange={handleChange}
+          className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        >
+          <option value="">Is Best Selling?</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+
         <input
-          className="w-full border p-2"
+          className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="text"
           name="price"
           value={formData.price}
           onChange={handleChange}
           placeholder="Price"
+          required
         />
         <input
-          className="w-full border p-2"
+          className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="text"
           name="category"
           value={formData.category}
           onChange={handleChange}
           placeholder="Category"
+          required
         />
         <textarea
-          className="w-full border p-2"
+          className="w-full border border-gray-300 px-4 py-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
           name="description"
           value={formData.description}
           onChange={handleChange}
           placeholder="Description"
+          required
         />
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md"
         >
           Save Changes
         </button>

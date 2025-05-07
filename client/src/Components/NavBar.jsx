@@ -44,7 +44,7 @@ function NavBar() {
         </button>
 
         {/* Menu */}
-        <div className={`flex-col lg:flex-row lg:flex gap-5 text-sm sm:text-base items-center lg:static absolute top-full left-0 w-full bg-blue-800 lg:bg-transparent px-6 py-4 lg:p-0 transition-all duration-300 ease-in-out ${isMenuOpen ? 'flex' : 'hidden'}`}>
+        <div className={`flex-col lg:flex-row  lg:flex gap-5 text-sm  sm:text-base items-center lg:static absolute top-full left-0 w-full  bg-blue-800 lg:bg-transparent px-6 py-4 lg:p-0 transition-all duration-300 ease-in-out ${isMenuOpen ? 'flex' : 'hidden'}`}>
           <Link to="/" onClick={closeMenu} className="hover:bg-blue-700 rounded-md p-2 text-center w-full lg:w-auto">Home</Link>
           <a href="/contact" onClick={closeMenu} className="hover:bg-blue-700 rounded-md p-2 text-center w-full lg:w-auto">Contact Us</a>
           <a href="location" onClick={closeMenu} className="hover:bg-blue-700 rounded-md p-2 text-center w-full lg:w-auto">Location</a>
