@@ -22,7 +22,6 @@ app.use(cors({
 
 
 app.get("/", async (req, res) => {
-  console.log(req.cookies)
   try {
     let product = await ProductModel.find();
     return res.json(product);
@@ -31,8 +30,6 @@ app.get("/", async (req, res) => {
   }
 });
 app.get("/get/:id", async (req, res) => {
-  console.log(req.cookies, "user id as cookie")
-  console.log(req.cookies)
   const id = req.params.id;
   try {
     const product = await ProductModel.findById(id);
@@ -45,10 +42,8 @@ app.get("/get/:id", async (req, res) => {
 
 app.put("/update/:id", checkAuthMiddleWare, async (req, res) => {
   const id = req.params.id;
-  console.log(id, "product id");
   try {
     const updated = await ProductModel.findByIdAndUpdate(id, req.body, { new: true });
-    console.log(updated)
     return res.status(200).json({ message: "Product updated successfully" });
   } catch (error) {
     return res.status(404).json({ message: "Error on updating time " });
@@ -68,8 +63,6 @@ app.delete("/delete/:id", checkAuthMiddleWare, async (req, res) => {
 
 app.post("/upload", checkAuthMiddleWare, async (req, res) => {
   let { data } = req.body;
-  console.log(`This is data from post request to upload: ${data}`);
-
   try {
     let product = await ProductModel.create(data);
     return res.json(product);
@@ -99,7 +92,6 @@ app.post("/auth/logout", (req, res) => {
 
 app.get('/auth/check', (req, res) => {
   const token = req.cookies.token;
-  console.log(token);
   if (!token) return res.json({ loggedIn: false });
 
   // verify token logic
@@ -114,11 +106,11 @@ app.get('/auth/check', (req, res) => {
 
 
 app.post("/contact-us", (req, res) => {
-  // i will handle the contact us form here
+  // i will handle the contact us form here 
   // using nodeMailer of Resend API
 
   res.json({ message: "message sent successfully" })
-}) 
+})
 
 
 
