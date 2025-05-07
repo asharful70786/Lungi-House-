@@ -5,12 +5,17 @@ import dotenv from "dotenv";
 import ConnectDb from "./config/db.js";
 import ProductModel from "./model/productModel.js";
 import UserModel from "./model/userModel.js";
+import checkAuthMiddleWare from "./middleWare/checkAuthMiddleWare.js";
+
+
 
 dotenv.config();
 await ConnectDb();
 const app = express();
 app.use(cookieParser());
-import checkAuthMiddleWare from "./middleWare/checkAuthMiddleWare.js";
+import sendMail from "./services/mailSendServices.js";
+
+
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
@@ -105,14 +110,15 @@ app.get('/auth/check', (req, res) => {
 
 
 
-app.post("/contact-us", (req, res) => {
-  // i will handle the contact us form here 
-  // using nodeMailer of Resend API
-
-  res.json({ message: "message sent successfully" })
+app.post("/contact-us", async (req, res) => {
+  const { name, email, phone, message } = req.body;
+  try {
+    await sendMail(name, email, phone, message);
+    return res.json({ message: "message sent successfully" })  
+  } catch (error) {
+    return res.status(404).json({ message: "Failed to send message" });
+  }
 })
-
-
 
 
 app.listen(3000, () => console.log("Server running on port  3000"));                                                                                                                 
