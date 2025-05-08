@@ -7,7 +7,7 @@ function Login() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useAuth(); // ✅ set global auth state
+  const { setIsLoggedIn } = useAuth();
 
   useEffect(() => {
     fetch('http://localhost:3000/auth/check', {
@@ -16,7 +16,7 @@ function Login() {
       .then(res => res.json())
       .then(data => {
         if (data.loggedIn) {
-          setIsLoggedIn(true);         // ✅ update global auth state
+          setIsLoggedIn(true);         
           navigate('/');
         } else {
           setIsLoggedIn(false);

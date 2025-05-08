@@ -6,7 +6,7 @@ function UploadProduct() {
     name: '',
     price: '',
     category: '',
-    image: '',
+    image: null, // must be a File object
     description: '',
     isBestSelling: ''
   });
@@ -14,27 +14,39 @@ function UploadProduct() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm(prev => ({
+    const { name, value, files } = e.target;
+    setForm((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: files ? files[0] : value // handle file vs text input
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/upload", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ data: form })
-    });
 
-    if (res.ok) {
-      navigate("/");
-    } else {
-      alert("You can't upload. Try contacting the owner.");
+    const formData = new FormData();
+    formData.append('name', form.name);
+    formData.append('price', form.price);
+    formData.append('category', form.category);
+    formData.append('description', form.description);
+    formData.append('isBestSelling', form.isBestSelling);
+    formData.append('image', form.image); // append the file
+
+    try {
+      const res = await fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+      });
+
+      if (res.ok) {
+        navigate('/');
+      } else {
+        alert("Upload failed. Please contact the owner.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong.");
     }
   };
 
@@ -44,6 +56,7 @@ function UploadProduct() {
       <form onSubmit={handleSubmit} className="space-y-5">
         <input
           name="name"
+          value={form.name}
           onChange={handleChange}
           placeholder="Product Name"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -51,29 +64,31 @@ function UploadProduct() {
         />
         <input
           name="price"
+          type="number"
+          value={form.price}
           onChange={handleChange}
           placeholder="Price"
-          type="number"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
         <input
           name="category"
+          value={form.category}
           onChange={handleChange}
           placeholder="Category"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
         <input
+          type="file"
           name="image"
           onChange={handleChange}
-          placeholder="Image URL"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
-        {/* Dropdown for isBestSelling */}
         <select
           name="isBestSelling"
+          value={form.isBestSelling}
           onChange={handleChange}
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
@@ -84,6 +99,7 @@ function UploadProduct() {
         </select>
         <textarea
           name="description"
+          value={form.description}
           onChange={handleChange}
           placeholder="Description"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -101,5 +117,3 @@ function UploadProduct() {
 }
 
 export default UploadProduct;
-
-
