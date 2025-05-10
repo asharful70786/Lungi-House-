@@ -10,6 +10,7 @@ import sendMail from "./services/mailSendServices.js";
 import cloudinary from 'cloudinary';
 import upload from "./config/uploadConfig.js";
 import { uploadImage } from "./services/CloudinaryServices.js";
+import fs from 'fs';
 
 
 dotenv.config();
@@ -84,6 +85,8 @@ app.post("/upload", checkAuthMiddleWare, upload.single("image"), async (req, res
       console.error("Cloudinary Upload Error:", cloudError);
       return res.status(500).json({ message: "Image upload failed" });
     }
+    //clear from server
+    fs.unlinkSync(req.file.path); 
     const product = new ProductModel({
       name,
       price,

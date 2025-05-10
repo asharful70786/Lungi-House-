@@ -6,23 +6,34 @@ function UploadProduct() {
     name: '',
     price: '',
     category: '',
-    image: null, // must be a File object
+    image: null,
     description: '',
     isBestSelling: ''
   });
 
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+
+    // Validate image file size (max 5MB)
+    if (name === 'image' && files[0]) {
+      if (files[0].size > 5 * 1024 * 1024) {
+        alert('Image file size must be less than 5MB');
+        return;
+      }
+    }
+
     setForm((prev) => ({
       ...prev,
-      [name]: files ? files[0] : value // handle file vs text input
+      [name]: files ? files[0] : value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append('name', form.name);
@@ -30,7 +41,7 @@ function UploadProduct() {
     formData.append('category', form.category);
     formData.append('description', form.description);
     formData.append('isBestSelling', form.isBestSelling);
-    formData.append('image', form.image); // append the file
+    formData.append('image', form.image);
 
     try {
       const res = await fetch('http://localhost:3000/upload', {
@@ -42,11 +53,13 @@ function UploadProduct() {
       if (res.ok) {
         navigate('/');
       } else {
-        alert("Upload failed. Please contact the owner.");
+        alert('Upload failed. Please contact the owner.');
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong.");
+      alert('Something went wrong.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,18 +84,23 @@ function UploadProduct() {
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
-        <input
+        <select
           name="category"
           value={form.category}
           onChange={handleChange}
-          placeholder="Category"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
-        />
+        >
+          <option value="">Select Category</option>
+          <option value="T-shirt">T-shirt</option>
+          <option value="Lungi">Lungi</option>
+          <option value="Vest">Vest</option>
+        </select>
         <input
           type="file"
           name="image"
           onChange={handleChange}
+          accept="image/*"
           className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
@@ -105,11 +123,23 @@ function UploadProduct() {
           className="w-full border border-gray-300 px-4 py-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         ></textarea>
+
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md"
+          disabled={loading}
+          className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
         >
-          Upload
+          {loading ? (
+            <span className="flex items-center gap-2">
+              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+              </svg>
+              Uploading...
+            </span>
+          ) : (
+            'Upload Product'
+          )}
         </button>
       </form>
     </div>
