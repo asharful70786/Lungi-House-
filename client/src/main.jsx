@@ -11,6 +11,7 @@ import Layout from './Layout';
 import { AuthProvider } from './context/AuthContext';
 import ContactUs from './pages/ContactUs';
 import Location from './pages/Location';
+import Cart from './pages/cart';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -26,6 +27,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="edit/:id" element={<ProductEdit />} />
             <Route path="login" element={<Login />} />
             <Route path="location" element={<Location />} />
+            <Route path="cart" element={<Cart />} />
+
             <Route path="*" element={<h1>404 - Page Not Found</h1>} />
           </Route>
         </Routes>

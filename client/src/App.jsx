@@ -26,67 +26,76 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative bg-gradient-to-br from-blue-50 to-white">
-      {/* Heartbeat Background */}
-      <div className="heartbeat-bg"></div>
+    <div className="min-h-screen bg-white py-10 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center mb-10">
+          <h1 className="text-4xl font-bold text-gray-800"></h1>
+          {isLoggedIn && (
+            <Link to="/upload" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow-md">
+              + Add Product
+            </Link>
+          )}
+        </div>
 
-      <div className="flex-grow">
-        <div className="max-w-6xl mx-auto p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-blue-700">Products</h1>
-            {isLoggedIn && (
-              <Link
-                to="/upload"
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-              >
-                + Add Product
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
+          {products.map(product => (
+            <div
+              key={product._id}
+              className="border rounded-xl overflow-hidden bg-white shadow hover:shadow-lg transition-transform duration-300 transform hover:scale-105"
+            >
+              <Link to={`/product/${product._id}`}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-60 object-cover"
+                />
               </Link>
-            )}
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map(product => (
-              <div
-                key={product._id}
-                className="border rounded-xl shadow-md bg-white p-4 flex flex-col items-center hover:shadow-lg transition duration-200 transform hover:scale-105"
-              >
-                <div className="relative">
-                  <Link to={`/product/${product._id}`}>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-40 object-cover rounded mb-2 transition-transform duration-300 transform hover:scale-110"
-                    />
-                    {product.isBestSelling && (
-                      <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full shadow z-50 flex items-center gap-1">
-                        🔥 Best Seller
-                      </div>
-                    )}
-                  </Link>
-                </div>
-                <h2 className="text-xl font-semibold text-center">{product.name}</h2>
-                <p className="text-gray-700">₹{product.price}</p>
-                <p className="text-sm text-gray-500 text-center mt-1">{product.description}</p>
-                <div className="mt-3 flex justify-between w-full px-4">
-                  <Link
+              <div className="p-4 flex flex-col justify-between h-full">
+                <div>
+                  <h2 className="text-lg font-semibold mb-1 text-gray-900">{product.name}</h2>
+                  <p className="text-red-600 font-semibold text-sm mb-1">₹{product.price}</p>
+                  <p className="text-gray-500 text-sm line-clamp-2">{product.description}</p>
+                    <Link
                     to={`/product/${product._id}`}
                     className="text-blue-600 hover:underline"
                   >
                     View
                   </Link>
-                  {/* Uncomment this block if you want to allow delete */}
-                  {/* {isLoggedIn && (
-                    <button
-                      onClick={() => handleDelete(product._id)}
-                      className="text-red-500 hover:underline"
+
+
+                </div>
+
+                <div className="mt-4 flex justify-between items-center bg-red-700">
+                  <Link
+                    to={`/product/${product._id}`}
+                    className="text-blue-600 hover:underline text-sm font-medium"
+                  >
+                    View
+                  </Link>
+
+                  
+
+
+                  <a
+                    href={`https://wa.me/?text=Check%20this%20product:%20${window.location.origin}/product/${product._id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-500 hover:text-green-700 transition"
+                    title="Share on WhatsApp"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      className="w-5 h-5"
+                      viewBox="0 0 16 16"
                     >
-                      Delete
-                    </button>
-                  )} */}
+                    </svg>
+                  </a>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

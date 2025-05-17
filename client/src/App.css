@@ -10,6 +10,24 @@
   animation: heartbeat 10s ease infinite;
   padding-top: 50px;
 }
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* Make sure content fits within the screen width */
+/* Prevent horizontal scrolling */
+/* body {
+  overflow-x: hidden;
+} */
+
+/* Ensure full width layout */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 
 @keyframes heartbeat {
   0%, 100% {
