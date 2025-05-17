@@ -17,7 +17,7 @@ export const uploadImage = (file) => {
       { folder: 'products' }, 
       (error, result) => {
         if (error) return reject(error);
-        resolve(result);
+        resolve(result); 
       }
     );
     streamifier.createReadStream(file.buffer).pipe(uploadStream);

@@ -81,12 +81,15 @@ app.post("/upload", checkAuthMiddleWare, upload.single("image"), async (req, res
     let imageUploadResponse;
     try {
       imageUploadResponse = await uploadImage(req.file);
+     
+
     } catch (cloudError) {
       console.error("Cloudinary Upload Error:", cloudError);
       return res.status(500).json({ message: "Image upload failed" });
     }
-    //clear from server
-    fs.unlinkSync(req.file.path); 
+    //remove the file also from the server
+    // console.log(req.file)
+    // fs.unlinkSync(req.file.path); 
     const product = new ProductModel({
       name,
       price,
