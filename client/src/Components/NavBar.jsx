@@ -23,7 +23,9 @@ function NavBar() {
     <nav className="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* //set margein right 1p pz */}
-        <h1 className="font-bold mr-25 text-2xl">Lungi House</h1>
+       <Link to="/">
+          <h1 className="font-bold mr-25 text-2xl">Lungi House</h1>
+       </Link>
 
 
         {/* Hamburger Icon */}
