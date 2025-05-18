@@ -1,5 +1,6 @@
 // src/main.jsx
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
@@ -18,6 +19,7 @@ import Payments from './pages/Payment';
 import ShippingFAQ from './pages/Shipping';
 import TermsOfUse from './pages/Terms&Condition';
 import PrivacyPolicy from './pages/Privacy';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -45,6 +47,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="*" element={<h1>404 - Page Not Found</h1>} />
           </Route>
         </Routes>
+         <Analytics />
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>
