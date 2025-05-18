@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 function Footer() {
   const year = new Date().getFullYear();
@@ -25,7 +25,7 @@ function Footer() {
             <li><a href="/payements">Payments</a></li>
             <li><a href="/shipping">Shipping</a></li>
             {/* <li>Returns</li> */}
-            <li>FAQ</li>
+            <li ><a href="/FAQ">FAQ</a></li>
           </ul>
         </div>
 

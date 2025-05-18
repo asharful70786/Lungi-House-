@@ -19,6 +19,7 @@ import Payments from './pages/Payment';
 import ShippingFAQ from './pages/Shipping';
 import TermsOfUse from './pages/Terms&Condition';
 import PrivacyPolicy from './pages/Privacy';
+import FAQ from './pages/FAQ';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -39,10 +40,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="about" element={<AboutUs />} />
             <Route path='careers' element={<Careers/>} />
             <Route path='payements' element={<Payments/>} />
-<Route path='Shipping' element={< ShippingFAQ/>} />
-<Route path='Terms' element={<TermsOfUse/>} />
-<Route path='privacy' element={<PrivacyPolicy/>} />
-<Route path='careers' element={<Careers/>} />
+           <Route path='Shipping' element={< ShippingFAQ/>} />
+            <Route path='Terms' element={<TermsOfUse/>} />
+           <Route path='privacy' element={<PrivacyPolicy/>} />
+           <Route path='careers' element={<Careers/>} />
+            <Route path='FAQ' element={< FAQ/>} />
 
             <Route path="*" element={<h1>404 - Page Not Found</h1>} />
           </Route>

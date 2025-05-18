@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const sampleImages = [
-  'https://images.unsplash.com/photo-1745179276969-d9db2e682b5d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Lungi-like cloth
-  'https://images.unsplash.com/photo-1741802872469-b404a312fa91?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Textile image
-  'https://images.unsplash.com/photo-1745179276969-d9db2e682b5d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Bangladeshi style
-  'https://images.unsplash.com/photo-1741802872469-b404a312fa91?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Fabric store sample
-];
+  'https://i.ytimg.com/vi/TgjDMvoT3hY/maxresdefault.jpg', 
+  'https://sslungi.in/wp-content/uploads/2023/05/s-l500.png',
+
+  'https://i.ytimg.com/vi/L9UrWVkOdpw/maxresdefault.jpg', 
+]
 
 const AboutUs = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
