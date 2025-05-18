@@ -138,7 +138,7 @@ function ContactUs() {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g. +91 12345 67890"
+              placeholder="e.g. +91 9876543210"
             />
           </div>
 

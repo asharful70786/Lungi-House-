@@ -25,7 +25,7 @@ const Careers = () => (
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
         <h2 className="text-xl font-semibold text-green-700 mb-2">Get in Touch</h2>
         <div className="space-y-2 text-gray-700">
-          <p className="flex items-center"><FaPhoneAlt className="mr-2 text-green-600" /> <span>+91-9679654448</span></p>
+          <p className="flex items-center"><FaPhoneAlt className="mr-2 text-green-600" /> <span>+91-96796544448</span></p>
           {/* <p className="flex items-center"><FaEnvelope className="mr-2 text-blue-500" /> <span>ashrafulmomin530@example.com</span></p> */}
           <a
             href="https://wa.me/919679654448"

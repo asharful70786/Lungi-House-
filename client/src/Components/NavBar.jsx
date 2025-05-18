@@ -45,7 +45,7 @@ function NavBar() {
             </Link>
             <Link to="/contact" className="hover:text-yellow-300">Contact</Link>
             <Link to="/location" className="hover:text-yellow-300">Location</Link>
-            <a href="tel:1234567890" className="hover:text-yellow-300">📞 9679654448</a>
+            <a href="tel:9679654448" className="hover:text-yellow-300">📞 9679654448</a>
 
             {!isLoggedIn ? (
               <Link to="/login" className="hover:text-yellow-300 flex items-center gap-1">
@@ -88,7 +88,7 @@ function NavBar() {
           <Link to="/cart" onClick={closeMenu} className="text-xl font-semibold text-white">🛒 Cart</Link>
           <Link to="/contact" onClick={closeMenu} className="text-xl font-semibold text-white">Contact</Link>
           <Link to="/location" onClick={closeMenu} className="text-xl font-semibold text-white">Location</Link>
-          <a href="tel:1234567890" onClick={closeMenu} className="text-xl font-semibold text-white">📞 123-456-7890</a>
+          <a href="tel:9679654448" onClick={closeMenu} className="text-xl font-semibold text-white">📞 9679654448</a>
 
           {!isLoggedIn ? (
             <Link to="/login" onClick={closeMenu} className="text-xl font-semibold text-white">Login</Link>
