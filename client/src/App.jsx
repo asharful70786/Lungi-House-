@@ -1,20 +1,28 @@
-
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import "./App.css";
+import './App.css';
+import Loading from './Loading';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { isLoggedIn } = useAuth();
 
   useEffect(() => {
+    setLoading(true); // Start loading
     fetch('https://lungi-house.onrender.com')
       .then(res => res.json())
-      .then(data => setProducts(data));
+      .then(data => {
+        setProducts(data);
+        setLoading(false); // Stop loading after data is fetched
+      })
+      .catch(() => setLoading(false)); // Stop loading even on error
   }, []);
 
- 
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="min-h-screen bg-white py-10 px-4 mt-10">
@@ -22,7 +30,10 @@ function App() {
         <div className="flex justify-between items-center mb-10">
           <h1 className="text-4xl font-bold text-gray-800"></h1>
           {isLoggedIn && (
-            <Link to="/upload" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow-md">
+            <Link
+              to="/upload"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 shadow-md"
+            >
               + Add Product
             </Link>
           )}
@@ -47,32 +58,27 @@ function App() {
                   <h2 className="text-lg font-semibold mb-1 text-gray-900">{product.name}</h2>
                   <p className="text-red-600 font-semibold text-sm mb-1">₹{product.price}</p>
                   <p className="text-gray-500 text-sm line-clamp-2">{product.description}</p>
-                    <Link
+                  <Link
                     to={`/product/${product._id}`}
                     className="text-blue-600 hover:underline"
                   >
                     View
                   </Link>
-
-
                 </div>
 
-                <div className="mt-4 flex justify-between items-center bg-red-700">
+                <div className="mt-4 flex justify-between items-center bg-red-700 p-2 rounded">
                   <Link
                     to={`/product/${product._id}`}
-                    className="text-blue-600 hover:underline text-sm font-medium"
+                    className="text-white hover:underline text-sm font-medium"
                   >
                     View
                   </Link>
-
-                  
-
 
                   <a
                     href={`https://wa.me/?text=Check%20this%20product:%20${window.location.origin}/product/${product._id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-500 hover:text-green-700 transition"
+                    className="text-green-400 hover:text-green-600 transition"
                     title="Share on WhatsApp"
                   >
                     <svg
@@ -81,6 +87,7 @@ function App() {
                       className="w-5 h-5"
                       viewBox="0 0 16 16"
                     >
+                     
                     </svg>
                   </a>
                 </div>
