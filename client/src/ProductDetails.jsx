@@ -52,7 +52,7 @@ const ProductDetail = () => {
   )}`;
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
+    <div className="min-h-screen bg-gray-100 py-10 px-4 mt-15">
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row transition-all duration-300">
         {/* Left Image Section */}
         <div className="w-full md:w-1/2 flex justify-center items-start">

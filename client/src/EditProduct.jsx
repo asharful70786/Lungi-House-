@@ -28,7 +28,7 @@ const EditProduct = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white shadow rounded">
+    <div className="max-w-xl mx-auto p-6 bg-white shadow rounded mt-15">
       <h2 className="text-2xl font-bold mb-4">Edit Product</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" className="w-full p-2 border rounded" />
