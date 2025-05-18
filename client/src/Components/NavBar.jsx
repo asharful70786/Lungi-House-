@@ -13,7 +13,7 @@ function NavBar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const logout = async () => {
-    await fetch("http://localhost:3000/auth/logout", {
+    await fetch("https://lungi-house.onrender.com/auth/logout", {
       method: "POST",
       credentials: "include",
     });

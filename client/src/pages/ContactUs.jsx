@@ -47,7 +47,7 @@ function ContactUs() {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/contact-us', {
+      const response = await fetch('https://lungi-house.onrender.com/contact-us', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

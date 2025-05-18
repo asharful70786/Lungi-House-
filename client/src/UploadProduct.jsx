@@ -44,7 +44,7 @@ function UploadProduct() {
     formData.append('image', form.image);
 
     try {
-      const res = await fetch('http://localhost:3000/upload', {
+      const res = await fetch('https://lungi-house.onrender.com/upload', {
         method: 'POST',
         credentials: 'include',
         body: formData

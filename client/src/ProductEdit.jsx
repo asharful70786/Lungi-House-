@@ -14,7 +14,7 @@ function ProductEdit() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:3000/get/${id}`, {
+    fetch(`https://lungi-house.onrender.com/get/${id}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ function ProductEdit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let response = await fetch(`http://localhost:3000/update/${id}`, {
+    let response = await fetch(`https://lungi-house.onrender.com/update/${id}`, {
       credentials: "include",
       method: "PUT",
       headers: {

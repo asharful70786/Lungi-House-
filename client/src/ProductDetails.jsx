@@ -9,12 +9,12 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/get/${id}`)
+    fetch(`https://lungi-house.onrender.com/get/${id}`)
       .then(res => res.json())
       .then(setProduct)
       .catch(err => console.error("Failed to fetch product:", err));
 
-    fetch("http://localhost:3000/auth/check", {
+    fetch("https://lungi-house.onrender.com/auth/check", {
       credentials: "include",
     })
       .then(res => res.json())
@@ -30,7 +30,7 @@ const ProductDetail = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/delete/${id}`, {
+      const response = await fetch(`https://lungi-house.onrender.com/delete/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

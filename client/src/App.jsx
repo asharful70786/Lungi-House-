@@ -9,22 +9,12 @@ function App() {
   const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    fetch('http://localhost:3000/')
+    fetch('https://lungi-house.onrender.com')
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
 
-  const handleDelete = async (id) => {
-    const confirm = window.confirm("Are you sure you want to delete this product?");
-    if (!confirm) return;
-
-    await fetch(`http://localhost:3000/delete/${id}`, {
-      credentials: "include",
-      method: "DELETE"
-    });
-
-    setProducts(prev => prev.filter(p => p._id !== id));
-  };
+ 
 
   return (
     <div className="min-h-screen bg-white py-10 px-4">

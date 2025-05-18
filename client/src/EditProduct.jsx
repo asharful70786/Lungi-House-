@@ -7,7 +7,7 @@ const EditProduct = () => {
   const [formData, setFormData] = useState({ name: '', price: '', category: '', description: '', image: '' })
 
   useEffect(() => {
-    fetch(`http://localhost:3000/get/${id}`)
+    fetch(`https://lungi-house.onrender.com/get/${id}`)
       .then(res => res.json())
       .then(data => setFormData(data))
   }, [id])
@@ -18,7 +18,7 @@ const EditProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await fetch(`http://localhost:3000/update/${id}`, {
+    await fetch(`https://lungi-house.onrender.com/update/${id}`, {
       credentials: 'include',
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

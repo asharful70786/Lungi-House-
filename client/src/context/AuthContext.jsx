@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkLogin = async () => {
     try {
-      const res = await fetch('http://localhost:3000/auth/check', {
+      const res = await fetch('https://lungi-house.onrender.com/auth/check', {
         credentials: 'include',
       });
       const data = await res.json();
