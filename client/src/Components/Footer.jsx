@@ -47,7 +47,7 @@ function Footer() {
             <li>👨‍💻 Built by <span className="text-yellow-400 font-semibold"><a href="https://www.ashraful.in/">Ashraful</a></span></li>
             <li>📍 Kolkata , India</li>
             <li>📞 <span className="text-green-400 font-bold">+91-7076091389</span></li>
-            <li>📧 ashrafulmomin530@example.com</li>
+            {/* <li>📧 ashrafulmomin530@gmail.com</li> */}
           </ul>
         </div>
       </div>
