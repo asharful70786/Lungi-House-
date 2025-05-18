@@ -34,8 +34,18 @@ export const loginUser = async (req, res) => {
 
 
 export const logoutUser = async (req, res) => {
-  res.clearCookie("token");
-  return res.status(200).json({ message: "Logout successful" });
+  try {
+    res.clearCookie("token", {
+      domain: ".ashraful.in",
+      httpOnly: true,
+      signed: true,
+      secure: true,
+      sameSite: "None"
+    });
+    return res.status(200).json({ message: "Logout successful" });
+  } catch (error) {
+    return res.json({ message: "Something went wrong at logout" });
+  }
 };
 
 
