@@ -10,7 +10,7 @@ function Login() {
   const { setIsLoggedIn } = useAuth();
 
   useEffect(() => {
-    fetch('https://lungi-house.onrender.com/auth/check', {
+    fetch('https://api.ashraful.in/auth/check', {
       credentials: 'include',
     })
       .then(res => res.json())
@@ -33,7 +33,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://lungi-house.onrender.com/auth/login', {
+      const response = await fetch('https://api.ashraful.in/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

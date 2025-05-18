@@ -7,7 +7,7 @@ const EditProduct = () => {
   const [formData, setFormData] = useState({ name: '', price: '', category: '', description: '', image: '' })
 
   useEffect(() => {
-    fetch(`https://lungi-house.onrender.com/get/${id}`)
+    fetch(`https://api.ashraful.in/get/${id}`)
       .then(res => res.json())
       .then(data => setFormData(data))
   }, [id])
@@ -18,7 +18,7 @@ const EditProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await fetch(`https://lungi-house.onrender.com/update/${id}`, {
+    await fetch(`https://api.ashraful.in/update/${id}`, {
       credentials: 'include',
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

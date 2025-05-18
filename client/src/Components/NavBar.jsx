@@ -13,7 +13,7 @@ function NavBar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const logout = async () => {
-    await fetch("https://lungi-house.onrender.com/auth/logout", {
+    await fetch("https://api.ashraful.in/auth/logout", {
       method: "POST",
       credentials: "include",
     });
@@ -77,13 +77,9 @@ function NavBar() {
             <FaTimes />
           </button>
 
-          <input
-            type="text"
-            placeholder="Search..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="px-4 py-2 rounded-md text-black"
-          />
+          <div className="flex-shrink-0">
+            <Link to="#" className="text-2xl font-bold text-white">Lungi House</Link>
+          </div>
 
           <Link to="/cart" onClick={closeMenu} className="text-xl font-semibold text-white">🛒 Cart</Link>
           <Link to="/contact" onClick={closeMenu} className="text-xl font-semibold text-white">Contact</Link>

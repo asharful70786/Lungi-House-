@@ -14,7 +14,7 @@ function ProductEdit() {
   });
 
   useEffect(() => {
-    fetch(`https://lungi-house.onrender.com/get/${id}`, {
+    fetch(`https://api.ashraful.in/get/${id}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ function ProductEdit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let response = await fetch(`https://lungi-house.onrender.com/update/${id}`, {
+    let response = await fetch(`https://api.ashraful.in/update/${id}`, {
       credentials: "include",
       method: "PUT",
       headers: {

@@ -44,7 +44,7 @@ function UploadProduct() {
     formData.append('image', form.image);
 
     try {
-      const res = await fetch('https://lungi-house.onrender.com/upload', {
+      const res = await fetch('https://api.ashraful.in/upload', {
         method: 'POST',
         credentials: 'include',
         body: formData

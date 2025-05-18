@@ -9,12 +9,12 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://lungi-house.onrender.com/get/${id}`)
+    fetch(`https://api.ashraful.in/get/${id}`)
       .then(res => res.json())
       .then(setProduct)
       .catch(err => console.error("Failed to fetch product:", err));
 
-    fetch("https://lungi-house.onrender.com/auth/check", {
+    fetch("https://api.ashraful.in/auth/check", {
       credentials: "include",
     })
       .then(res => res.json())
@@ -30,7 +30,7 @@ const ProductDetail = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`https://lungi-house.onrender.com/delete/${id}`, {
+      const response = await fetch(`https://api.ashraful.in/delete/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true); // Start loading
-    fetch('https://lungi-house.onrender.com')
+    fetch('https://api.ashraful.in')
       .then(res => res.json())
       .then(data => {
         setProducts(data);
