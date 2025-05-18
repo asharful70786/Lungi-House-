@@ -14,7 +14,7 @@ import Location from './pages/Location';
 import Cart from './pages/cart';
 import AboutUs from './pages/Aboutus';
 import Careers from './pages/carrier';
-import Payments from './pages/PAyment';
+import Payments from './pages/Payment';
 import ShippingFAQ from './pages/Shipping';
 import TermsOfUse from './pages/Terms&Condition';
 import PrivacyPolicy from './pages/Privacy';
