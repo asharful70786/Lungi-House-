@@ -11,9 +11,9 @@ function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-2">About</h4>
           <ul className="space-y-1">
-            <li>Contact Us</li>
-            <li>About Us</li>
-            <li>Careers</li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/careers">Careers</a></li>
             {/* <li>Press</li> */}
           </ul>
         </div>
@@ -22,9 +22,9 @@ function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-2">Help</h4>
           <ul className="space-y-1">
-            <li>Payments</li>
-            <li>Shipping</li>
-            <li>Returns</li>
+            <li><a href="/payements">Payments</a></li>
+            <li><a href="/shipping">Shipping</a></li>
+            {/* <li>Returns</li> */}
             <li>FAQ</li>
           </ul>
         </div>
@@ -33,10 +33,10 @@ function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-2">Policy</h4>
           <ul className="space-y-1">
-            <li>Terms of Use</li>
-            <li>Privacy</li>
-            <li>Security</li>
-            <li>Sitemap</li>
+            <li><a href="/Terms">Terms of Use</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            {/* <li>Security</li>
+            <li>Sitemap</li> */}
           </ul>
         </div>
 
@@ -44,8 +44,8 @@ function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-2">Developer Info</h4>
           <ul className="space-y-1">
-            <li>👨‍💻 Built by <span className="text-yellow-400 font-semibold">Ashraful</span></li>
-            <li>📍 Mumbai, India</li>
+            <li>👨‍💻 Built by <span className="text-yellow-400 font-semibold"><a href="https://www.ashraful.in/">Ashraful</a></span></li>
+            <li>📍 Kolkata , India</li>
             <li>📞 <span className="text-green-400 font-bold">+91-7076091389</span></li>
             <li>📧 ashrafulmomin530@example.com</li>
           </ul>

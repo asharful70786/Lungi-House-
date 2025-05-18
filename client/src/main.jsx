@@ -12,6 +12,12 @@ import { AuthProvider } from './context/AuthContext';
 import ContactUs from './pages/ContactUs';
 import Location from './pages/Location';
 import Cart from './pages/cart';
+import AboutUs from './pages/Aboutus';
+import Careers from './pages/carrier';
+import Payments from './pages/PAyment';
+import ShippingFAQ from './pages/Shipping';
+import TermsOfUse from './pages/Terms&Condition';
+import PrivacyPolicy from './pages/Privacy';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -28,6 +34,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="login" element={<Login />} />
             <Route path="location" element={<Location />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="about" element={<AboutUs />} />
+            <Route path='careers' element={<Careers/>} />
+            <Route path='payements' element={<Payments/>} />
+<Route path='Shipping' element={< ShippingFAQ/>} />
+<Route path='Terms' element={<TermsOfUse/>} />
+<Route path='privacy' element={<PrivacyPolicy/>} />
+<Route path='careers' element={<Careers/>} />
 
             <Route path="*" element={<h1>404 - Page Not Found</h1>} />
           </Route>

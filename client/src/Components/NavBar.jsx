@@ -39,12 +39,13 @@ function NavBar() {
               onChange={(e) => setSearch(e.target.value)}
               className="px-4 py-1 rounded-md text-black"
             />
+           <Link to="/about" className="hover:text-yellow-300">About</Link>
             <Link to="/cart" className="hover:text-yellow-300 flex items-center gap-1">
               <FaShoppingCart /> Cart
             </Link>
             <Link to="/contact" className="hover:text-yellow-300">Contact</Link>
             <Link to="/location" className="hover:text-yellow-300">Location</Link>
-            <a href="tel:1234567890" className="hover:text-yellow-300">📞 123-456-7890</a>
+            <a href="tel:1234567890" className="hover:text-yellow-300">📞 9679654448</a>
 
             {!isLoggedIn ? (
               <Link to="/login" className="hover:text-yellow-300 flex items-center gap-1">
