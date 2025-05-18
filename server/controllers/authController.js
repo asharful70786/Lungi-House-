@@ -16,10 +16,12 @@ export const loginUser = async (req, res) => {
     res.cookie("token", user._id.toString(), {
       httpOnly: true,
       signed: true,
-      secure: false, // true in production
-      sameSite: "lax",
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000 * 30), // 30 days expiration 
+      secure: true,          // ✅ Must be true for cross-origin HTTPS
+      sameSite: "None",      // ✅ Required for cross-site cookies
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
     });
+
+
 
     return res.status(200).json({ message: "Login Successful" });
 
@@ -35,7 +37,7 @@ export const logoutUser = async (req, res) => {
 };
 
 
-export const checkUser =  (req, res) => {
+export const checkUser = (req, res) => {
 
   try {
     return res.json({ loggedIn: true });
