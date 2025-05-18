@@ -18,7 +18,7 @@ app.use(cookieParser("this is key"));
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors({
-  origin: ["https://lungi-house-8tpb.vercel.app", "http://localhost:3000"],
+  origin: "https://lungi-house-8tpb.vercel.app/",
   credentials: true
 }));
 
