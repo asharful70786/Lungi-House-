@@ -24,7 +24,7 @@ const faqData = [
   },
   {
     question: 'How can I contact you?',
-    answer: 'You can WhatsApp us directly at +91 96796 54448  for quick support.',
+    answer: 'You can WhatsApp us directly at +91 9679654448  for quick support.',
     icon: <HelpCircle className="text-red-600 w-6 h-6" />
   }
 ];

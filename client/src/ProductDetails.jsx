@@ -47,7 +47,7 @@ const ProductDetail = () => {
     return <div className="text-center mt-10"><Loading /></div>;
   }
 
-  const whatsappLink = `https://wa.me/96796544448?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/9679654448?text=${encodeURIComponent(
     `Hi, I'm interested in this product:\n\n${product.name}\n₹${product.price}\n\n${window.location.href}\n\nImage: ${product.image}`
   )}`;
 
