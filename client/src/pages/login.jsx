@@ -75,7 +75,7 @@ function Login() {
               onChange={handleChange}
               required
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="you@example.com"
+              placeholder="your email address"
             />
           </div>
           <div>

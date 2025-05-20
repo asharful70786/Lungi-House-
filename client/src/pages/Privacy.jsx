@@ -45,7 +45,7 @@ const PrivacyPolicy = () => (
       <div className="flex items-start gap-4">
         <MailCheck className="text-gray-600 w-6 h-6 mt-1" />
         <p className="text-lg leading-relaxed">
-          Have questions? Our developer is available for privacy-related concerns at <a href="mailto:ashrafulmomin530@example.com" className="text-blue-600 underline">ashrafulmomin530@example.com</a>
+          Have questions? Our developer is available for privacy-related concerns at <a href="mailto:ashrafulmomin530@gmail.com" className="text-blue-600 underline">ashrafulmomin530@gmail.com</a>
         </p>
       </div>
     </div>

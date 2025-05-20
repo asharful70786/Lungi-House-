@@ -24,7 +24,7 @@ function NavBar() {
   return (
     <nav className="bg-blue-900 text-white fixed w-full top-0 left-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-13 items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="text-2xl font-bold text-white">Lungi House</Link>
